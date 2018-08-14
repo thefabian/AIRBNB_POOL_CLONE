@@ -7,7 +7,7 @@ class Pool < ApplicationRecord
   validates :address, uniqueness: true, presence: true
   validates :price, presence: true, numericality: true
   validates :capacity, presence: true, numericality: true
-  validates :type, presence: true, inclusion: { in: ["indoor", "outdoor"] }
+  validates :category, presence: true, inclusion: { in: ["indoor", "outdoor"] }
   validates :description, uniqueness: true, presence: true, length: { minimum: 90 }
   validates :length, presence: true, numericality: true
   validates :width, presence: true, numericality: true

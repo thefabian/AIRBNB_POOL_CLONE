@@ -1,2 +1,63 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+
+<div class="container text-center">
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="header-profile">
+        <h1>Hello <%= current_user.email %></h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum officia, assumenda iste magnam. Quidem voluptatibus, veritatis sit facere. Ipsam quisquam reprehenderit dicta sunt, a cumque cum ex error possimus culpa.</p>
+
+      </div>
+      <div class="profile-picture">
+        <%= image_tag "https://avatars1.githubusercontent.com/u/40575245?v=4" %>
+      </div>
+    </div>
+  </div>
+  <div class="container text-center" id="last_bookings">
+    <h2>Latest bookings</h2>
+    <div class="row">
+      <div class="col-xs-12 col-md-4">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1440558953273-969c107f78a4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5eaa0f30a1c37f38a4a365bd0c7d54ea&auto=format&fit=crop&w=1850&q=80');">
+          <div class="card-category">Outdoor</div>
+          <div class="card-description">
+            <h3> <%= link_to 'Pool von Matti', pool_path() %></h3>
+            <p><i class="fas fa-umbrella-beach"></i><i class="fas fa-umbrella-beach"></i><i class="fas fa-umbrella-beach"></i><i class="fas fa-umbrella-beach"></i><i class="fas fa-umbrella-beach"></i>Fette Party</p>
+          </div>
+          <img class="card-user" src="https://avatars3.githubusercontent.com/u/12513436?v=4">
+          <a class="card-link" href="#" ></a>
+        </div>
+      </div>
+      <div class="col xs-12 col-md-4">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1518627239243-944dcaefbbb9?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7a500254d45b5dbce325c84eee260c9e&auto=format&fit=crop&w=2250&q=80');">
+         <div class="card-category">Outdoor</div>
+         <div class="card-description">
+          <h3> <%= link_to 'Pool von Kaya', pool_path() %></h3>
+          <p><i class="fas fa-umbrella-beach"></i><i class="fas fa-umbrella-beach"></i><i class="fas fa-umbrella-beach"></i><i class="fas fa-umbrella-beach"></i><i class="fas fa-umbrella-beach"></i>Fette Party</p>
+        </div>
+        <img class="card-user" src="https://avatars3.githubusercontent.com/u/12513436?v=4">
+        <a class="card-link" href="#" ></a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-4">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1434817247550-689f7c23be58?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=43c2e233e3171c5b03b6c5c8101a828c&auto=format&fit=crop&w=2000&q=80');">
+       <div class="card-category">Outdoor</div>
+       <div class="card-description">
+        <h3> <%= link_to 'Pool von Hans', pool_path() %></h3>
+        <p><i class="fas fa-umbrella-beach"></i><i class="fas fa-umbrella-beach"></i><i class="fas fa-umbrella-beach"></i><i class="fas fa-umbrella-beach"></i><i class="fas fa-umbrella-beach"></i>Fette Party</p>
+      </div>
+      <img class="card-user" src="https://avatars3.githubusercontent.com/u/12513436?v=4">
+      <a class="card-link" href="#" ></a>
+    </div>
+  </div>
+  <%= link_to "Add pool", new_pool_path, class: "button btn btn-primary" %>
+</div>
+</div>
+
+
+
+
+
+
+
+</div>
+
+
