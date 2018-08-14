@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_13_150215) do
+ActiveRecord::Schema.define(version: 2018_08_14_125500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2018_08_13_150215) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "guest"
     t.index ["pool_id"], name: "index_bookings_on_pool_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
@@ -31,7 +32,7 @@ ActiveRecord::Schema.define(version: 2018_08_13_150215) do
     t.text "address"
     t.float "price"
     t.integer "capacity"
-    t.string "type"
+    t.string "category"
     t.text "description"
     t.float "length"
     t.float "depth"
