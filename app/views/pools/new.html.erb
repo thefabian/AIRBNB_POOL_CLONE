@@ -12,8 +12,8 @@
           <%= f.input :title, required: false, autofocus: true, label: false, placeholder: 'Title', hint: '*Give your pool a catchy name, so that other users are fancy to come over.' %>
           <%= f.input :address, required: false, label: false, placeholder: 'Address' %>
           <%= f.input :price , label: false, placeholder: 'Price', hint: 'Normally users set a price range between 50.00 € and 350.00 € per day.'%>
-          <%= f.input :capacity, as: :check_boxes, collection: [ 10, 20, 30, 40, 50 ], placeholder: 'Capacity', label: false %>
-          <%= f.input :category, as: :radio_buttons, label: false, placeholder: 'Category', label: false, collection: [ 'Outdoor', 'Indoor' ] %>
+          <%= f.input :capacity, collection: [ 10, 20, 30, 40, 50 ], label: false %>
+          <%= f.input :category, as: :radio_buttons, label: false, placeholder: 'Category', collection: [ 'outdoor', 'indoor' ] %>
           <%= f.input :description, label: false, placeholder: 'Description' %>
           <div class="form-row">
             <div class="col-7">
