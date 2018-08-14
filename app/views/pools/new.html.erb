@@ -1,2 +1,41 @@
-<h1>Pools#new</h1>
-<p>Find me in app/views/pools/new.html.erb</p>
+ <div class="grey-wrapper">
+  <div class="container text-center" id="add-pool">
+    <div class="row">
+      <div class="xs-col-6 xs-col-offset-3">
+        <h2>Add a pool</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-3 col-md-6 col-md-offset-3">
+        <div class="form-inputs">
+          <%= simple_form_for @pool do |f| %>
+          <%= f.input :title, required: false, autofocus: true, label: false, placeholder: 'Title', hint: '*Give your pool a catchy name, so that other users are fancy to come over.' %>
+          <%= f.input :address, required: false, label: false, placeholder: 'Address' %>
+          <%= f.input :price , label: false, placeholder: 'Price', hint: 'Normally users set a price range between 50.00 € and 350.00 € per day.'%>
+          <%= f.input :capacity, as: :check_boxes, collection: [ 10, 20, 30, 40, 50 ], placeholder: 'Capacity', label: false %>
+          <%= f.input :category, as: :radio_buttons, label: false, placeholder: 'Category', label: false, collection: [ 'Outdoor', 'Indoor' ] %>
+          <%= f.input :description, label: false, placeholder: 'Description' %>
+          <div class="form-row">
+            <div class="col-7">
+              <%= f.input :length, label: false, placeholder: 'Length', class: 'form-control-sm' %>
+            </div>
+            <div class="col">
+              <%= f.input :depth, label: false, placeholder: 'Depth', class: 'form-control-sm' %>
+            </div>
+            <div class="col">
+              <%= f.input :width, label: false, placeholder: 'Width', class: 'form-control-sm' %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, "Add", :class => "button btn btn-primary" %>
+        </div>
+        <%= link_to "", pools_path, class: 'fas fa-backward' %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+
