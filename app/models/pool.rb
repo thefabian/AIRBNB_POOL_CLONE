@@ -12,4 +12,12 @@ class Pool < ApplicationRecord
   validates :length, presence: true, numericality: true
   validates :width, presence: true, numericality: true
   validates :depth, presence: true, numericality: true
+
+  def self.search(term)
+    if term
+      where('title LIKE ?', "%#{term}%")
+    else
+      all
+    end
+  end
 end

@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2018_08_14_105250) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "guest"
     t.index ["pool_id"], name: "index_bookings_on_pool_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
