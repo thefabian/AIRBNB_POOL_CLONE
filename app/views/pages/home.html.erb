@@ -1,6 +1,106 @@
-<div class="grey-wrapper">
-  <div class="container">
-    <h1>Pages#home</h1>
-    <p>Find me in app/views/pages/home.html.erb</p>
+<div class="container text-center">
+  <div class="banner-home" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('/assets/poo_2.jpg');">
+    <div class="banner-content">
+      <h3>Get wet</h3>
+      <h1>What's your excuse?</h1>
+      <p>Find your perfect pool and enjoy life</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="buttons text-center">
+        <%= link_to "Book a pool", pools_path, class: 'btn btn-primary btn-lg' %>
+        <%= link_to "Add a pool", pools_path, class: 'btn btn-default btn-lg' %>
+      </div>
+    </div>
+  </div>
+  <div id="content">
+    <h2>This is how it works</h2>
+    <div class="row">
+      <div class="col-xs-12 col-md-4">
+        <div class="card-home">
+          <div class="card-home-description">
+            <h4><i class="far fa-credit-card"></i><span>Book a pool</span></h4>
+          </div>
+          <div class="card-home-content">
+            <p>Here it is explained how to book a pool and jump into it with style</p>
+            <%= link_to "Don't waste time", pools_path, class: 'btn btn-sm btn-success btn-round' %>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-4">
+        <div class="card-home">
+          <div class="card-home-description">
+            <h4><i class="fas fa-mobile-alt"></i><span>Call your friends</span></h4>
+          </div>
+          <div class="card-home-content">
+            <p>Here it is explained how to contact your friends within our application</p>
+            <%= link_to "Don't waste time", pools_path, class: 'btn btn-sm btn-success btn-round' %>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-4">
+        <div class="card-home">
+          <div class="card-home-description">
+            <h4><i class="fas fa-cocktail"></i><span>Enjoy life</span></h4>
+          </div>
+          <div class="card-home-content">
+            <p>Here it is explained how to enjoy life. Hint: Grab a beer and relax</p>
+            <%= link_to "Don't waste time", pools_path, class: 'btn btn-sm btn-success btn-round' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="banner-home relative" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('/assets/Pool_party.jpg');">
+       <div class="banner-content absolute">
+        <h3>Pool Partys</h3>
+        <p>Sensational moments <br>that take your breathe</p>
+        <%= link_to "Disover now", pools_path, class: 'btn btn-xs btn-transparent' %>
+      </div>
+    </div>
   </div>
 </div>
+<h2>Latest reviews from our users</h2>
+<div class="banner-home-reviews">
+  <div class="card-review">
+    <div class="review-description">
+      <h3>Review from Kermit</h3>
+      <h4>Badeschiff</h4>
+    </div>
+    <div class="review-date">
+      <p>27/11/2017</p>
+    </div>
+    <div class="review-content">
+      <p>What an awesome place to get wasted! Will def come back!</p>
+    </div>
+    <div class="review-user-avatar">
+      <%= image_tag "kermit.jpeg", class: "avatar" %>
+    </div>
+
+  </div>
+  <div class="card-review">
+    <div class="review-description">
+      <h3>Review from Kermit</h3>
+      <h4>Badeschiff</h4>
+    </div>
+    <div class="review-date">
+      <p>27/11/2017</p>
+    </div>
+    <div class="review-content">
+      <p>What an awesome place to get wasted! Will def come back! </p>
+    </div>
+    <div class="review-user-avatar">
+      <%= image_tag "samson.jpg", class: "avatar" %>
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+
+
+
