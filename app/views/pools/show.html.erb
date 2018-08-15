@@ -1,80 +1,45 @@
+
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://source.unsplash.com/500x400/?cocktail');">
+</div>
 <div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <p><%= @pool.category %></p>
-      <h1><%= @pool.title %></h1>
-    </div>
-    <div class="overview">
-      <p>Capacity: <%= @pool.capacity %></p>
-      <p>L: <%= @pool.length %> x W: <%= @pool.width %> x D: <%= @pool.depth %></p>
-      <%= link_to "Back to all pools", pools_path %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-12 col-md-6">
-      <h3>Description</h3>
-      <p><%= @pool.description %></p>
-      <h2><%= @pool.address %></h2>
-      <h3><%= @pool.price %></h3>
-      <table class="table table-bordered">
-        <tbody>
-          <thead>
-            <th>Capacity</th>
-            <th>Category</th>
-            <th>L x W x D</th>
-          </thead>
-          <tr>
-            <td><%= @pool.capacity %></td>
-            <td><%= @pool.category %></td>
-            <td><%= @pool.length %> x <%= @pool.width %> x <%= @pool.width %></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <div>
-  <%= simple_form_for [@pool, @booking] do |f| %>
-  <%= f.input :start_date, as: :date %>
-  <%= f.input :end_date, as: :date %>
-  <%= f.input :guest, collection: (1..@pool.capacity) %>
-  <%= f.submit "book it now", class: "btn btn-primary" %>
-  <% end %>
-  </div>
-  <div class='col-md-5'>
-    <div class="form-group">
-      <div class='input-group date' id='datetimepicker6'>
-        <input type='text' class="form-control" />
-        <span class="input-group-addon">
-          <span class="glyphicon glyphicon-calendar"></span>
-        </span>
+  <div class="content">
+    <div class="cards-container">
+      <div class="row">
+          <div class="col-xs-12 col-md-8 col-lg-8">
+            <p><%= @pool.category %></p>
+            <h1 id="pool"><%= @pool.title %></h1>
+            <p><i class="fas fa-users"></i> <%= @pool.capacity    %>   <i class="fas fa-swimming-pool"></i> <%= @pool.length %>m x <%= @pool.width %>m x <%= @pool.depth %>m       <i class="fas fa-volume-up"></i> <i class="fas fa-cannabis"></i>  <i class="fas fa-wifi"></i></p>
+            <%= link_to "Back to all pools", pools_path %>
+            <h3>Description</h3>
+            <p><%= @pool.description %></p>
+            <h3>Address</h3>
+            <p><%= @pool.address %></p>
+            <h3>Equipment</h3>
+              <ul class="list-inline" id="iconlist">
+                  <p><i class="fas fa-users"></i><%= @pool.capacity %></p>
+                  <p><i class="fas fa-compass"></i> <%= @pool.category %></p>
+                  <p><i class="fas fa-swimming-pool"></i> <%= @pool.length %> x <%= @pool.width %> x <%= @pool.width %></p>
+                  <p><i class="fab fa-cc-paypal"></i> <%= "Paypal" %></p>
+                  <p><i class="fas fa-wifi"></i> <%= "WIFI" %></p>
+                  <p><i class="fas fa-cannabis"></i> <%= "Cannabis" %></p>
+              </ul>
+          </div>
       </div>
     </div>
-  </div>
-  <div class='col-md-5'>
-    <div class="form-group">
-      <div class='input-group date' id='datetimepicker7'>
-        <input type='text' class="form-control" />
-        <span class="input-group-addon">
-          <span class="glyphicon glyphicon-calendar"></span>
-        </span>
-      </div>
+    <div id="login">
+      <div id="heading">
+      <h3><%= @pool.price %>€ <span class="per-day">per Day</span></h3>
+    </div>
+    <div id="fillform"></div>
+      <%= simple_form_for [@pool, @booking], method: :post do |t| %>
+        <%= t.input :start_date, placeholder: "CHECK-IN", as: :string, input_html: { id: "start_date" } %>
+        <%= t.input :end_date, placeholder: "CHECK-OUT", as: :string, input_html: { id: "end_date" } %>
+        <%= t.input :guest, placeholder: "GUEST", collection: (1..@pool.capacity) %>
+        <%=  t.submit "Book it now", class: "btn btn-primary" %>
+      <% end %>
     </div>
   </div>
 </div>
 
-<script type="text/javascript">
-  $(function () {
-    $('#datetimepicker1').datetimepicker();
-    $('#datetimepicker2').datetimepicker({
-            useCurrent: false //Important! See issue #1075
-          });
-    $("#datetimepicker1").on("dp.change", function (e) {
-      $('#datetimepicker2').data("DateTimePicker").minDate(e.date);
-    });
-    $("#datetimepicker1").on("dp.change", function (e) {
-      $('#datetimepicker2').data("DateTimePicker").maxDate(e.date);
-    });
-  });
-</script>
 
 
