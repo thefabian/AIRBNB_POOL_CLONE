@@ -10,6 +10,7 @@ class PoolsController < ApplicationController
   def create
     @pool = Pool.new(pool_params)
     @pool.user = current_user
+    @review = Review.new
     if @pool.save
       redirect_to pool_path(@pool)
     else
@@ -20,6 +21,7 @@ class PoolsController < ApplicationController
   def show
     @pool = Pool.find(params[:id])
     @booking = Booking.new
+    @review = Review.new
   end
 
   def edit
