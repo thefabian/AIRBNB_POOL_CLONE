@@ -13,11 +13,10 @@ class Pool < ApplicationRecord
   validates :width, presence: true, numericality: true
   validates :depth, presence: true, numericality: true
 
-  def self.search(term)
-    if term
-      where('title LIKE ?', "%#{term}%")
-    else
-      all
-    end
-  end
+include PgSearch
+  pg_search_scope :global_search,
+    against: [ :title, :address, :description, :category ],
+    using: {
+      tsearch: { prefix: true }
+    }
 end

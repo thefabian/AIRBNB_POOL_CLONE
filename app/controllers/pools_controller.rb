@@ -1,6 +1,10 @@
 class PoolsController < ApplicationController
   def index
-    @pools = Pool.search(params[:term])
+     if params[:query].present?
+      @pools = Pool.global_search(params[:query])
+    else
+      @pools = Pool.all
+    end
   end
 
   def new
@@ -34,6 +38,6 @@ class PoolsController < ApplicationController
   private
 
   def pool_params
-    params.require(:pool).permit(:title, :address, :price, :capacity, :category, :description, :length, :depth, :width, :term)
+    params.require(:pool).permit(:title, :address, :price, :capacity, :category, :description, :length, :depth, :width)
   end
 end
