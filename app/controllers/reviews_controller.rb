@@ -9,7 +9,7 @@ class ReviewsController < ApplicationController
     @pool = Pool.find(params[:pool_id])
     @review = Review.new(review_params)
     @review.pool = @pool
-    @review.user = @user
+    @review.user = current_user
     if @review.save
       redirect_to pool_path(@pool)
 
@@ -23,3 +23,5 @@ class ReviewsController < ApplicationController
   def review_params
     params.require(:review).permit(:rating, :description)
   end
+
+end

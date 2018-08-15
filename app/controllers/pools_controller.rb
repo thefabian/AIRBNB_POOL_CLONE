@@ -18,7 +18,7 @@ class PoolsController < ApplicationController
     if @pool.save
       redirect_to pool_path(@pool)
     else
-      render 'pools/new'
+      render 'pools/show'
     end
   end
 
