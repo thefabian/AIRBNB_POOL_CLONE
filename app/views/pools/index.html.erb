@@ -6,34 +6,31 @@
   </div>
 </div>
 
-<div>
-<%= form_tag(pools_path, method: :get) do %>
-  <%= text_field_tag :term, params[:term] %>
-  <%= submit_tag 'Search', name: nil %>
-<% end %>
-</div>
-
 <div class="content">
   <div class="cards-container">
     <div class="row">
       <% @pools.each do |pool| %>
-        <div class="col-xs-12 col-md-6 col-lg-4">
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://source.unsplash.com/500x400/?cocktail');">
+      <div class="col-xs-12 col-md-6 col-lg-4">
+        <% if pool.photo.blank? %>
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://source.unsplash.com/500x400/?cocktail');">
+          <% else %>
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path pool.photo, height: 300, width: 400, crop: :fill %>')">
+            <% end %>
             <div class="card-description">
               <h2><%= pool.title %></h2>
             </div>
             <%= link_to "", pool_path(pool), class: 'card-link' %>
           </div>
         </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
+    <div id="map"></div>
   </div>
-  <div id="map"></div>
-</div>
 
-<!-- Gmaps js: building the map -->
-<script>
-  function initMap() {
+  <!-- Gmaps js: building the map -->
+  <script>
+    function initMap() {
         // Create a map object and specify the DOM element for display.
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 52.5206, lng: 13.4098},
