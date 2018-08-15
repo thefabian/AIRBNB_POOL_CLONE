@@ -10,6 +10,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @pool = Pool.find(params[:pool_id])
+    @booking.pool = @pool
     if @booking.save
       redirect_to pool_path(@pool)
     else
