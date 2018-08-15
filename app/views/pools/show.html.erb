@@ -47,12 +47,12 @@
 
 </div>
 
-      <%= simple_form_for [@restaurant, @review] do |f| %>
+      <%= simple_form_for [@pool, @review] do |f| %>
         <%= f.input :rating, collection: 0..5 %>
-        <%= f.input :content%>
+        <%= f.input :description%>
         <%= f.submit class: 'btn btn-primary' %>
       <% end %>
-      <%= link_to "See all restaurants", restaurants_path %>
+      <%= link_to "See all POOLS", pool_path %>
     </div>
   </div>
 
