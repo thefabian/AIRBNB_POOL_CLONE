@@ -1,4 +1,4 @@
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://source.unsplash.com/500x400/?cocktail');">
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://source.unsplash.com/random/?swimmingpool');">
   <div class="banner-content">
     <h1>GetWet Pools</h1>
     <p>Awesome local pools for hot summer days</p>
@@ -12,7 +12,7 @@
       <% @pools.each do |pool| %>
       <div class="col-xs-12 col-md-6 col-lg-4">
         <% if pool.photo.blank? %>
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://source.unsplash.com/500x400/?cocktail');">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://source.unsplash.com/random/?swimmingpool');">
           <% else %>
           <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path pool.photo, height: 300, width: 400, crop: :fill %>')">
             <% end %>
