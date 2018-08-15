@@ -1,6 +1,12 @@
 source 'https://rubygems.org'
 ruby '2.4.4'
 
+gem 'carrierwave', '~> 1.2'
+
+gem 'cloudinary'
+
+gem 'dotenv-rails', groups: [:development, :test]
+
 gem 'pg_search'
 
 gem 'devise'
