@@ -10,15 +10,22 @@
   <div class="cards-container">
     <div class="row">
       <% @pools.each do |pool| %>
-      <div class="col-xs-12 col-md-6 col-lg-4">
+      <div class="col-xs-12 col-sm-4">
         <% if pool.photo.blank? %>
         <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://source.unsplash.com/random/?swimmingpool');">
           <% else %>
           <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path pool.photo, height: 300, width: 400, crop: :fill %>')">
             <% end %>
+            <div class="card-category"><%= pool.address.split.last %></div>
             <div class="card-description">
               <h2><%= pool.title %></h2>
+              <p><%= pool.price %>€ per day · Free cancellation</p>
             </div>
+            <% if current_user.photo.blank? %>
+            <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+            <% else %>
+            <%= cl_image_tag current_user.photo, class: "card-user" %>
+            <% end %>
             <%= link_to "", pool_path(pool), class: 'card-link' %>
           </div>
         </div>
@@ -27,4 +34,3 @@
     </div>
     <div id="map_all"></div>
   </div>
-
