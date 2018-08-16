@@ -4,7 +4,7 @@
 .banner-home {
   color: white;
   text-align: center;
-  height: 430px;
+  height: calc(100vh - 70px - 100px);
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
   display: flex;
@@ -13,6 +13,33 @@
   margin-bottom: 32px;
   box-shadow: 0px 0px 57px 0px rgba(4, 6, 5, 0.25 );
 }
+
+.banner-home-small {
+  color: white;
+  text-align: center;
+  height: 450px;
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  background-size: cover !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 32px;
+  box-shadow: 0px 0px 57px 0px rgba(4, 6, 5, 0.25 );
+}
+
+.banner-home-small h1 {
+  font-size: 50px;
+  font-weight: bold;
+  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+}
+.banner-home-small p {
+  font-size: 25px;
+  font-weight: lighter;
+  color: rgb(255, 255, 255);
+  opacity: 0.6;
+  margin-bottom: 30px;
+}
+
 .banner-home h1 {
   font-size: 50px;
   font-weight: bold;
@@ -34,6 +61,7 @@
 
 .banner-content:hover {
   opacity: 1.0;
+  cursor: pointer;
 }
 
 .banner-home a {
@@ -186,7 +214,7 @@
 
 #content > p {
   border-top: 1px solid grey;
-  margin: 30px;
+  margin: 45px;
   opacity: 0.4;
 }
 
