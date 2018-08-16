@@ -35,11 +35,27 @@
       </div>
       <div id="fillform"></div>
       <%= simple_form_for [@pool, @booking], method: :post do |t| %>
+        <div class="col-xs-12 col-sm-5" style="padding-right: 0px; border-right: 0px solid #f4f4f4;">
         <%= t.input :start_date, placeholder: "CHECK-IN", as: :string, input_html: { id: "start_date" } %>
-        <%= t.input :end_date, placeholder: "CHECK-OUT", as: :string, input_html: { id: "end_date" } %>
-        <%= t.input :guest, placeholder: "GUEST", collection: (1..@pool.capacity) %>
-        <%=  t.submit "Book it now", class: "btn btn-primary" %>
+        </div>
+        <div class="col-xs-12 col-sm-7" style="padding-left: 0px; background-color: #f4f4f4;">
+        <%= t.input :end_date, placeholder: "→             CHECK-OUT", as: :string, input_html: { id: "end_date" } %>
+        </div>
+        <div class="col-xs-12 col-sm-12">
+        <%= t.input :guest, placeholder: "GUEST", collection: (1..@pool.capacity), class: "collection_form", prompt: "SELECT NUMBER OF GUESTS" %>
+        </div>
+        <div class="col-xs-12 col-sm-12">
+        <%=  t.submit "Book it now", class: "btn btn-primary", id: "btt" %>
+        </div>
       <% end %>
+      <div class="col-xs-12 col-sm-12">
+        <div class="more_info">
+          <h1></h1>
+        </div>
+        <div class="card" id="map_pool">
+          <p>map</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
