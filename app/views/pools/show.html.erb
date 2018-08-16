@@ -75,37 +75,45 @@
 
 </div>
 
-<p>
-  <span>Rating<%= @pool.title %>:</span>
-  <%= @pool.average_rating  %>
-</p>
 
-
-
-
-
-<div class="list-group ">
+<div>
   <% @pool.reviews.each do |review| %>
-  <li class="list-group-item">
-    <small>
-      <% count = 0 %>
-      <% 5.times do %>
-      <% if review.rating > count %>
-      <i class="fas fa-star"></i>
-      <% else %>
-      <i class="far fa-star"></i>
-      <% end %>
-      <% count += 1 %>
-      <% end %>
-    </small>
-    <p><%= review.description %></p>
-  </li>
-  <% end %>
+  <li>
+    <div class="reviews">
+      <div class="row blockquote review-item">
+        <div class="col-md-3 text-center ">
+          <% if current_user.photo.blank? %>
+          <img class="avatar" src="http://standaloneinstaller.com/upload/avatar.png">
+          <% else %>
+          <%= cl_image_tag review.user.photo, class: "avatar" %>
+          <% end %>
+          <div class="caption">
+            <small>by <%= link_to review.user.email, user_path(review.user)  %></small>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="ratebox text-center" data-id="0" data-rating="5"></div>
+
+          <small>
+            <% count = 0 %>
+            <% 5.times do %>
+            <% if review.rating > count %>
+            <i class="fas fa-star"></i>
+            <% else %>
+            <i class="far fa-star"></i>
+            <% end %>
+            <% count += 1 %>
+            <% end %>
+          </small>
+
+          <p class="review-text"><%= review.description %></p>
+
+          <% end %>
+        </li>
+      </div>
+    </div>
+  </div>
 </div>
-
-
-
-
 
 
 
@@ -113,7 +121,7 @@
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <div>
+      <div>s
        <%= simple_form_for [@pool, @review] do |f| %>
        <%= f.input :rating, collection: 0..5 %>
        <%= f.input :description%>
