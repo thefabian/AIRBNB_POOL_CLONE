@@ -1,4 +1,4 @@
-<% url = @pool.photo.blank? ? ('https://source.unsplash.com/random/?swimmingpool') : (cl_image_path @pool.photo, height: 300, width: 400, crop: :fill) %>
+<% url = @pool.photo.blank? ? (image_path 'pool_party.jpg') : (cl_image_path @pool.photo, height: 300, width: 400, crop: :fill) %>
 
 <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= url %>');">
 </div>
@@ -35,42 +35,29 @@
       </div>
       <div id="fillform"></div>
       <%= simple_form_for [@pool, @booking], method: :post do |t| %>
+        <div class="col-xs-12 col-sm-5" style="padding-right: 0px; border-right: 0px solid #f4f4f4;">
         <%= t.input :start_date, placeholder: "CHECK-IN", as: :string, input_html: { id: "start_date" } %>
-        <%= t.input :end_date, placeholder: "CHECK-OUT", as: :string, input_html: { id: "end_date" } %>
-        <%= t.input :guest, placeholder: "GUEST", collection: (1..@pool.capacity) %>
-        <%=  t.submit "Book it now", class: "btn btn-primary" %>
+        </div>
+        <div class="col-xs-12 col-sm-7" style="padding-left: 0px; background-color: #f4f4f4;">
+        <%= t.input :end_date, placeholder: "→             CHECK-OUT", as: :string, input_html: { id: "end_date" } %>
+        </div>
+        <div class="col-xs-12 col-sm-12">
+        <%= t.input :guest, placeholder: "GUEST", collection: (1..@pool.capacity), class: "collection_form", prompt: "SELECT NUMBER OF GUESTS" %>
+        </div>
+        <div class="col-xs-12 col-sm-12">
+        <%=  t.submit "Book it now", class: "btn btn-primary", id: "btt" %>
+        </div>
       <% end %>
-    </div>
-  </div>
-
-</div>
-<div class="list-group ">
-        <% @pool.reviews.each do |review| %>
-          <li class="list-group-item">
-            <small>
-              <% count = 0 %>
-              <% 5.times do %>
-                <% if review.rating > count %>
-                  <i class="fas fa-star"></i>
-                <% else %>
-                  <i class="far fa-star"></i>
-                <% end %>
-                <% count += 1 %>
-              <% end %>
-            </small>
-            <p><%= review.description %></p>
-          </li>
-        <% end %>
+      <div class="col-xs-12 col-sm-12">
+        <div class="more_info">
+          <h1></h1>
+        </div>
+        <div class="card" id="map_pool" data-lat="<%= @pool.latitude %>" data-lng="<%= @pool.longitude %>">
+        </div>
       </div>
-
-      <%= simple_form_for [@pool, @review] do |f| %>
-        <%= f.input :rating, collection: 0..5 %>
-        <%= f.input :description%>
-        <%= f.submit class: 'btn btn-primary' %>
-      <% end %>
-      <%= link_to "See all POOLS", pool_path %>
     </div>
   </div>
+</div>
 
 
 
