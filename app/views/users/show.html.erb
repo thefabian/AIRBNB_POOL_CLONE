@@ -1,87 +1,64 @@
-
 <div class="container text-center">
-  <div class="row">
-    <div class="col-xs-8 col-xs-offset-2">
-      <div class="header-profile">
-        <h1>Hello <%= current_user.email %></h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum officia, assumenda iste magnam. Quidem voluptatibus, veritatis sit facere. Ipsam quisquam reprehenderit dicta sunt, a cumque cum ex error possimus culpa.</p>
-
-      </div>
-      <div class="profile-picture">
-        <%= image_tag "https://avatars1.githubusercontent.com/u/40575245?v=4" %>
-      </div>
-    </div>
-  </div>
-  <div class="container text-center" id="last_bookings">
-    <h2>Latest bookings</h2>
-    <div class="row">
-      <div class="col-xs-12 col-md-4">
-        <div class="card-profile-page" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1440558953273-969c107f78a4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5eaa0f30a1c37f38a4a365bd0c7d54ea&auto=format&fit=crop&w=1850&q=80');">
-          <div class="card-profile-category">Outdoor</div>
-          <div class="card-profile-description">
-            <h3> <%= link_to 'Pool von Matti', pool_path() %></h3>
-            <p><i class="fas fa-umbrella-beach"></i><i class="fas fa-umbrella-beach"></i><i class="fas fa-umbrella-beach"></i><i class="fas fa-umbrella-beach"></i><i class="fas fa-umbrella-beach"></i>Fette Party</p>
-          </div>
-          <img class="card-profile-user" src="https://avatars3.githubusercontent.com/u/12513436?v=4">
-          <a class="card-profile-link" href="#" ></a>
+  <div class="grid">
+    <div class="card-user">
+      <div class="user-description">
+        <%= image_tag "samson.jpg", class: 'avatar' %>
+        <div class="user-header">
+          <h4>Wolfgang Petry</h4>
+          <p>Favourite jump <br> Cannonball</p>
+        </div>
+        <div class="user-status">
+          <p><i class="fas fa-power-off"></i></p>
+        </div>
+        <div class="user-button">
+          <%= link_to "Get in touch", pools_path, class: 'btn btn-success' %>
         </div>
       </div>
-      <div class="col xs-12 col-md-4">
-        <div class="card-profile-page" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1518627239243-944dcaefbbb9?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7a500254d45b5dbce325c84eee260c9e&auto=format&fit=crop&w=2250&q=80');">
-         <div class="card-profile-category">Outdoor</div>
-         <div class="card-profile-description">
-          <h3> <%= link_to 'Pool von Kaya', pool_path() %></h3>
-          <p><i class="fas fa-umbrella-beach"></i><i class="fas fa-umbrella-beach"></i><i class="fas fa-umbrella-beach"></i><i class="fas fa-umbrella-beach"></i><i class="fas fa-umbrella-beach"></i>Fette Party</p>
-        </div>
-        <img class="card-profile-user" src="https://avatars3.githubusercontent.com/u/12513436?v=4">
-        <a class="card-profile-link" href="#" ></a>
+    </div>
+    <div class="card-reviews">
+      <h4>My latest review</h4>
+      <% review = current_user.reviews.last %>
+      <div id="review">
+        <small>
+          <% count = 0 %>
+          <% 5.times do %>
+          <% if review.rating > count %>
+          <i class="fas fa-star full"></i>
+          <% else %>
+          <i class="far fa-star"></i>
+          <% end %>
+          <% count += 1 %>
+        </small>
+        <% end %>
+        <p class="review-description"> <span class="review-title"> <%= link_to review.pool.title, pool_path(review.pool), class: '' %> </span> <span> <%= review.created_at %> </span></p>
+        <p> Description: <%=  review.description %> </p>
+        <p>  </p>
+        <p> Pool owner: <%= review.pool.user.email.split(".").first.capitalize %> </p>
+      </div>
+
+    </div>
+    <div class="card-latest-booking">
+      <h4>my current booking</h4>
+      <% booking = current_user.bookings.last %>
+      <p>Pool: <%=  link_to booking.pool.title, pool_path(booking.pool) %></p>
+      <p>Average rating: </p>
+      <p>Guests: <%= booking.guest %></p>
+      <p>from <%=  booking.start_date %> <%= booking.end_date %></p>
+    </div>
+    <div class="card-parties" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://source.unsplash.com/D3A50t283ck/1600x900');">
+      <div class="party-description">
+        <h5>Next party</h5>
+        <p>Karottes Kitchen</p>
+        <%= link_to 'Join now' %>
       </div>
     </div>
-    <div class="col-xs-12 col-md-4">
-      <div class="card-profile-page" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1434817247550-689f7c23be58?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=43c2e233e3171c5b03b6c5c8101a828c&auto=format&fit=crop&w=2000&q=80');">
-       <div class="card-profile-category">Outdoor</div>
-       <div class="card-profile-description">
-        <h3> <%= link_to 'Pool von Hans', pool_path() %></h3>
-        <p><i class="fas fa-umbrella-beach"></i><i class="fas fa-umbrella-beach"></i><i class="fas fa-umbrella-beach"></i><i class="fas fa-umbrella-beach"></i><i class="fas fa-umbrella-beach"></i>Fette Party</p>
+    <div class="card-friends">
+      <div class="friends">
+        <h4>Friends you recently partied with</h4>
+        <%= image_tag "kermit.jpg", class: 'avatar' %>
+        <%= image_tag "kruemel.jpg", class: 'avatar' %>
+        <%= image_tag "chew.png", class: 'avatar' %>
+        <%= image_tag "dark.png", class: 'avatar' %>
       </div>
-      <img class="card-profile-user" src="https://avatars3.githubusercontent.com/u/12513436?v=4">
-      <a class="card-profile-link" href="#" ></a>
     </div>
   </div>
-  <%= link_to "Add pool", new_pool_path, class: "button btn btn-primary" %>
-</div>
-</div>
-</div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="card-user">
-       <img src="" alt="">
-       <div class="user-description">
-
-       </div>
-       <div class="user-social-buttons">
-
-       </div>
-     </div>
-   </div>
- </div>
- <div class="row">
-  <div class="col-xs-12">
-
-  </div>
-</div>
-<div class="row">
-  <div class="col-xs-12">
-
-  </div>
-</div>
-<div class="row">
-  <div class="col-xs-12">
-
-  </div>
-</div>
-</div>
-
-
