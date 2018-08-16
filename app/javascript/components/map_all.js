@@ -8,7 +8,7 @@ if (document.getElementById("map_all")) {
   style: 'mapbox://styles/mapbox/streets-v10',
   minZoom: 6
   });
+  map_all.addControl(new mapboxgl.NavigationControl());
 };
 
-map_all.addControl(new mapboxgl.NavigationControl());
 export { map_all }
