@@ -232,11 +232,11 @@
   opacity: 0.7;
 }
 
-.review-description p {
+.review-description > p {
   font-size: 15px;
 }
 
-.review-content p {
+.review-content > p {
   font-size: 18px;
   font-weight: lighter;
 
