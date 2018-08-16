@@ -5,7 +5,7 @@ class CreatePools < ActiveRecord::Migration[5.2]
       t.text :address
       t.integer :price
       t.integer :capacity
-      t.string :type
+      t.string :category
       t.text :description
       t.integer :length
       t.integer :depth
