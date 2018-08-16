@@ -6,27 +6,41 @@
   <div class="content">
     <div class="cards-container">
       <div class="row">
-          <div class="col-xs-12 col-md-8 col-lg-8">
-            <p><%= @pool.category %></p>
-            <h1 id="pool"><%= @pool.title %></h1>
-            <p>
-              <i class="fas fa-users"></i> <%= @pool.capacity    %>   <i class="fas fa-swimming-pool"></i> <%= @pool.length %>m x <%= @pool.width %>m x <%= @pool.depth %>m       <i class="fas fa-volume-up"></i> <i class="fas fa-cannabis"></i>  <i class="fas fa-wifi"></i>
-            </p>
-            <%= link_to "Back to all pools", pools_path %>
-            <h3>Description</h3>
-            <p><%= @pool.description %></p>
-            <h3>Address</h3>
-            <p><%= @pool.address %></p>
-            <h3>Equipment</h3>
-            <ul class="list-inline" id="iconlist">
-                <p><i class="fas fa-users"></i><%= @pool.capacity %></p>
-                <p><i class="fas fa-compass"></i> <%= @pool.category %></p>
-                <p><i class="fas fa-swimming-pool"></i> <%= @pool.length %> x <%= @pool.width %> x <%= @pool.width %></p>
-                <p><i class="fab fa-cc-paypal"></i> <%= "Paypal" %></p>
-                <p><i class="fas fa-wifi"></i> <%= "WIFI" %></p>
-                <p><i class="fas fa-cannabis"></i> <%= "Cannabis" %></p>
-            </ul>
+        <div class="col-xs-12 col-md-8 col-lg-8">
+          <p><%= @pool.category %></p>
+          <h1 id="pool"><%= @pool.title %></h1>
+          <div class="list-group ">
+            <small>
+              <% count = 0 %>
+              <% 5.times do %>
+              <% if @pool.average_rating > count %>
+              <i class="fas fa-star"></i>
+              <% else %>
+              <i class="far fa-star"></i>
+              <% end %>
+              <% count += 1 %>
+              <% end %>
+            </small>
           </div>
+          <p>
+            <i class="fas fa-users"></i> <%= @pool.capacity    %>   <i class="fas fa-swimming-pool"></i> <%= @pool.length %>m x <%= @pool.width %>m x <%= @pool.depth %>m       <i class="fas fa-volume-up"></i> <i class="fas fa-cannabis"></i>  <i class="fas fa-wifi"></i>
+          </p>
+          <%= link_to "Back to all pools", pools_path %>
+          <h3>Description</h3>
+          <p><%= @pool.description %></p>
+          <h3>Address</h3>
+          <p><%= @pool.address %></p>
+          <h3>Equipment</h3>
+          <ul class="list-inline" id="iconlist">
+            <p><i class="fas fa-users"></i><%= @pool.capacity %></p>
+            <p><i class="fas fa-compass"></i> <%= @pool.category %></p>
+            <p><i class="fas fa-swimming-pool"></i> <%= @pool.length %> x <%= @pool.width %> x <%= @pool.width %></p>
+            <p><i class="fab fa-cc-paypal"></i> <%= "Paypal" %></p>
+            <p><i class="fas fa-wifi"></i> <%= "WIFI" %></p>
+            <p><i class="fas fa-cannabis"></i> <%= "Cannabis" %></p>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">write review</button>
+          </ul>
+        </div>
       </div>
     </div>
     <div id="login">
@@ -35,18 +49,18 @@
       </div>
       <div id="fillform"></div>
       <%= simple_form_for [@pool, @booking], method: :post do |t| %>
-        <div class="col-xs-12 col-sm-5" style="padding-right: 0px; border-right: 0px solid #f4f4f4;">
+      <div class="col-xs-12 col-sm-5" style="padding-right: 0px; border-right: 0px solid #f4f4f4;">
         <%= t.input :start_date, placeholder: "CHECK-IN", as: :string, input_html: { id: "start_date" } %>
-        </div>
-        <div class="col-xs-12 col-sm-7" style="padding-left: 0px; background-color: #f4f4f4;">
+      </div>
+      <div class="col-xs-12 col-sm-7" style="padding-left: 0px; background-color: #f4f4f4;">
         <%= t.input :end_date, placeholder: "→             CHECK-OUT", as: :string, input_html: { id: "end_date" } %>
-        </div>
-        <div class="col-xs-12 col-sm-12">
+      </div>
+      <div class="col-xs-12 col-sm-12">
         <%= t.input :guest, placeholder: "GUEST", collection: (1..@pool.capacity), class: "collection_form", prompt: "SELECT NUMBER OF GUESTS" %>
-        </div>
-        <div class="col-xs-12 col-sm-12">
+      </div>
+      <div class="col-xs-12 col-sm-12">
         <%=  t.submit "Book it now", class: "btn btn-primary", id: "btt" %>
-        </div>
+      </div>
       <% end %>
       <div class="col-xs-12 col-sm-12">
         <div class="more_info">
@@ -60,33 +74,55 @@
   </div>
 
 </div>
-<div class="list-group ">
-        <% @pool.reviews.each do |review| %>
-          <li class="list-group-item">
-            <small>
-              <% count = 0 %>
-              <% 5.times do %>
-                <% if review.rating > count %>
-                  <i class="fas fa-star"></i>
-                <% else %>
-                  <i class="far fa-star"></i>
-                <% end %>
-                <% count += 1 %>
-              <% end %>
-            </small>
-            <p><%= review.description %></p>
-          </li>
-        <% end %>
-      </div>
 
-      <%= simple_form_for [@pool, @review] do |f| %>
-        <%= f.input :rating, collection: 0..5 %>
-        <%= f.input :description%>
-        <%= f.submit class: 'btn btn-primary' %>
+<p>
+  <span>Rating<%= @pool.title %>:</span>
+  <%= @pool.average_rating  %>
+</p>
+
+
+
+
+
+<div class="list-group ">
+  <% @pool.reviews.each do |review| %>
+  <li class="list-group-item">
+    <small>
+      <% count = 0 %>
+      <% 5.times do %>
+      <% if review.rating > count %>
+      <i class="fas fa-star"></i>
+      <% else %>
+      <i class="far fa-star"></i>
       <% end %>
-      <%= link_to "See all POOLS", pool_path %>
-    </div>
-  </div>
+      <% count += 1 %>
+      <% end %>
+    </small>
+    <p><%= review.description %></p>
+  </li>
+  <% end %>
+</div>
+
+
+
+
+
+
+
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div>
+       <%= simple_form_for [@pool, @review] do |f| %>
+       <%= f.input :rating, collection: 0..5 %>
+       <%= f.input :description%>
+       <%= f.submit class: 'btn btn-primary' %>
+       <% end %>
+     </div>
+   </div>
+ </div>
+</div>
 
 
 
