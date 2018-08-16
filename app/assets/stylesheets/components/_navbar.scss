@@ -9,11 +9,18 @@
   align-items: center;
   justify-content: space-between;
 }
-
+.border-letter h3 span{
+  color:  #ffffff;
+  border: solid 1px #000000;
+  margin: 0;
+}
+.navbar-wagon-left h3{
+  color:  $blue;
+}
 
 /* Logo */
 .navbar-wagon-brand img {
-  height: 50px;
+  height: 35px;
   padding: 0px 20px;
 }
 
