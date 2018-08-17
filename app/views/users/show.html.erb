@@ -9,7 +9,12 @@
             <p>Favourite jump <br> Cannonball</p>
           </div>
           <div class="user-status">
-            <p><i class="fas fa-power-off"></i></p>
+            <%= link_to user_path(current_user, anchor: "booking-section"), class: "btn btn-primary btn-xs" do %>
+              Bookings <span class="badge"><%= current_user.bookings.count %></span>
+            <% end %>
+            <%= link_to user_path(current_user, anchor: "review-section"), class: "btn btn-primary btn-xs" do %>
+              Reviews <span class="badge"><%= current_user.reviews.count %></span>
+            <% end %>
           </div>
           <div class="user-button">
             <%= link_to "Edit Profile", edit_user_registration_path, class: 'btn btn-success btn-sm' %>
@@ -22,7 +27,7 @@
     </div>
   </div>
 
-  <div class="review-headline">
+  <div class="review-headline" id="review-section">
     <h4>My latest reviews</h4>
     <p></p>
   </div>
@@ -77,7 +82,7 @@
   <% end %>
   <% end %>
 
-   <div class="review-headline">
+   <div class="review-headline" id="booking-section">
     <h4>My latest bookings</h4>
     <p></p>
   </div>
