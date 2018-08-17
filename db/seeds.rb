@@ -12,7 +12,7 @@ User.destroy_all
 puts "Create users..."
 
 
-user1 = User.create(email: 'get1@wet.com', password: '123456', remote_photo_url: "https://res.cloudinary.com/dmiexdhni/image/upload/v1534516902/40575245.jpg")
+user1 = User.create(email: 'jay@wet.com', password: '123456', remote_photo_url: "https://res.cloudinary.com/dmiexdhni/image/upload/v1534516902/40575245.jpg")
 user2 = User.create(email: 'get2@wet.com', password: '123456', remote_photo_url: "https://res.cloudinary.com/dmiexdhni/image/upload/v1534516902/uqmbzfszhjliu585pien.jpg")
 user3 = User.create(email: 'get3@wet.com', password: '123456', remote_photo_url: "https://res.cloudinary.com/dmiexdhni/image/upload/v1534516902/40687085.jpg")
 user4 = User.create(email: 'get4@wet.com', password: '123456', remote_photo_url: "https://res.cloudinary.com/dmiexdhni/image/upload/v1534516902/pqpavjwdyefnlr3jtkie.jpg")
@@ -141,6 +141,45 @@ pools = Pool.create([
   width: '15',
   user_id: user3.id,
   remote_photo_url: "https://res.cloudinary.com/dmiexdhni/image/upload/v1534517544/FF037.jpg"
+},
+{
+  title: 'Pool Deluxe',
+  address: 'Jansastraße 4, 12045 Berlin',
+  price: 23,
+  capacity: '200',
+  category: 'outdoor',
+  description: '1.Jetzt noch mehr Badespaß für Groß und Klein. Der Bestway Steel Pro Deluxe Splash Pool mit den Maßen 300 cm x 170 cm x 61 cm lädt zum Planschen und Spielen im kühlen Nass ein. Dieser Premium Pool aus stabilem Tritech-Material hält sogar problemlos UV-Strahlen und Chlor stand. Planschen im Wasser hat nie mehr Spaß gemacht als mit dem Bestway Steel Pro Deluxe Splash Frame Pool.',
+  length: '50',
+  depth: '5',
+  width: '15',
+  user_id: user4.id,
+  remote_photo_url: "http://calmwaterpools.com/swimming-pool-pictures/2013/10/laguna-deluxe-freeform-fiberglass-pool-4a.jpg"
+},
+{
+  title: 'The Open Mind pool',
+  address: 'Olympischer Platz 28, 14053 Berlin',
+  price: '7.5',
+  capacity: '1000',
+  category: 'outdoor',
+  description: '1. Cool off in the cold-water pool inside. And leave all your cares behind – between sauna sessions or at the end of a sauna visit – in the relaxation room with its aquarium. There is special focus on this in the sanarium (around 60° C) with “aqua viva” colored light and sound simulation as well as birdsong and sounds of nature.',
+  length: '100',
+  depth: '7.5',
+  width: '25',
+  user_id: user5.id,
+  remote_photo_url: "https://images.oyster.com/photos/deluxe-pool-suite--v6640889-720.jpg"
+},
+{
+  title: 'The Beautiful',
+  address: 'Olympischer Platz 28, 14053 Berlin',
+  price: '1000',
+  capacity: '1000',
+  category: 'outdoor',
+  description: '1. Cool off in the cold-water pool inside. And leave all your cares behind – between sauna sessions or at the end of a sauna visit – in the relaxation room with its aquarium. There is special focus on this in the sanarium (around 60° C) with “aqua viva” colored light and sound simulation as well as birdsong and sounds of nature.',
+  length: '100',
+  depth: '7.5',
+  width: '25',
+  user_id: user6.id,
+  remote_photo_url: "https://www.hiltonseychelleslabriz.com/assets/img/villas/dhpv/deluxe_hillside.jpg"
 }
 ])
 
