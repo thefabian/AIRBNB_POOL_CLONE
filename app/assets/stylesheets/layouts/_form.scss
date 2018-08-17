@@ -19,12 +19,12 @@
 }
 
 #heading {
-  border-bottom: 1px solid #e4e4e4;
-  padding-top: 24px;
+  padding-top:24px;
 }
 
 #heading h3 {
   font-size: 24px;
+  text-align: left;
 }
 
 .per-day {
@@ -124,3 +124,31 @@ i {
 .mapboxgl-canvas {
   position: relative !important;
 }
+
+.weather {
+    background-size: 30px 10px;
+}
+
+#icon .wi {
+  font-size: 30vmin !important;
+}
+
+#stars {
+  border-bottom: 1px solid #e4e4e4;
+  text-align: left;
+  display: flex;
+  margin-bottom: 5px;
+  p {
+    font-size: 14px;
+  }
+  small {
+    padding: 5px 10px 0 0;
+    i {
+      font-size: 10px;
+      letter-spacing: -15px;
+
+    }
+
+  }
+}
+
