@@ -15,7 +15,7 @@
           <% else %>
           <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path pool.photo, height: 300, width: 400, crop: :fill %>')">
             <% end %>
-            <div class="card-category"><%= pool.address.split.last %></div>
+            <div class="card-category lat-lng" data-lat="<%= pool.latitude %>" data-lng="<%= pool.longitude %>"><%= pool.address.split.last %></div>
             <div class="card-description">
               <h2><%= pool.title %></h2>
               <p><%= pool.price %>€ per day · Free cancellation</p>
