@@ -3,11 +3,7 @@
   padding: 25px;
 }
 
-.review-rating {
-  margin: 0 8px;
-}
-
-.reviews {
+#reviews {
   background: white;
   display: flex;
   align-items: center;
@@ -16,11 +12,10 @@
   transition: all 0.15s ease;
   box-shadow: 0px 0px 57px 0px rgba(4, 6, 5, 0.25 );
   opacity: 0.9;
+  margin-bottom: 10px;
 }
 
-.pool-details {
-  margin-left: 20px;
-}
+
 
 .pool-details > span > a {
   margin-bottom: 3px;
@@ -55,16 +50,18 @@
 }
 
 .friends {
+  display: flex;
   margin-right: 20px;
 }
 
-.friends > h6 {
-  margin-right: 20px;
-  font-size: 12px;
+.friends > div > h5 {
+  margin-bottom: 15px;
+  font-size: 14px;
+  font-weight: lighter;
 }
 
-.friends > ul > img {
-  margin-right: 10px;
+.friends > div > img {
+  margin-right: 5px;
 }
 
 .review-body p {
@@ -294,7 +291,7 @@
   border-radius: 50px;
 }
 
-.reviews:hover {
+#reviews:hover {
   background: #f7f7fa;
   cursor: pointer;
 }

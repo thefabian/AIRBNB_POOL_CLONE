@@ -23,53 +23,59 @@
   </div>
 
   <div class="review-headline">
-    <h4>My latest review</h4>
+    <h4>My latest reviews</h4>
     <p></p>
   </div>
 
-  <% review = current_user.reviews.last %>
-  <div class="reviews">
-    <div class='review-upvote'>
-      <div class="review-arrow"></div>
-      <div class='review-count'>95</div>
-    </div>
-    <img src="https://source.unsplash.com/Q9T0Z_F69rQ/1600x900" alt="Pool party" class="review-image hidden-xs">
-    <div class="pool-details">
-      <span> <%= link_to review.pool.title, pool_path(review.pool), class: 'btn btn-success btn-xs' %> </span>
-      <br>
-      <span class="details"> <%= review.created_at %> </span>
-      <br>
-      <span class="details"> Pool owner <%= review.pool.user.email.split(".").first.capitalize %> </span>
-    </div>
-    <div class='review-body'>
-      <div class="review-rating">
-        <div id="stars">
-          <small>
-            <% count = 0 %>
-            <% 5.times do %>
-            <% if review.rating > count %>
-            <i class="fas fa-star full"></i>
-            <% else %>
-            <i class="far fa-star empty"></i>
-            <% end %>
-            <% count += 1 %>
-          </small>
-          <% end %>
-        </div>
-        <div class="review-description">
-          <h6> Description: <%=  review.description[(0..50)] %> [...]</h6>
+  <% current_user.reviews.each do |review| %>
+
+  <% if review %>
+    <div id="reviews">
+      <div class='review-upvote'>
+          <div class="review-arrow"></div>
+          <div class='review-count'><%= review.id %></div>
+      </div>
+      <img src="https://source.unsplash.com/Q9T0Z_F69rQ/1600x900" alt="Pool party" class="review-image hidden-xs">
+      <div class="pool-details">
+        <span> <%= link_to review.pool.title, pool_path(review.pool), class: 'btn btn-success btn-xs' %> </span>
+        <br>
+        <span class="details"> <%= review.created_at %> </span>
+        <br>
+        <span class="details"> Pool owner <%= review.pool.user.email.split(".").first.capitalize %> </span>
+      </div>
+
+      <div class='review-body'>
+        <div class="review-rating">
+          <div id="stars">
+            <small>
+              <% count = 0 %>
+              <% 5.times do %>
+                <% if review.rating > count %>
+                  <i class="fas fa-star full"></i>
+                <% else %>
+                  <i class="far fa-star empty"></i>
+                <% end %>
+                <% count += 1 %>
+              <% end %>
+            </small>
+          </div>
+          <div class="review-description">
+            <h6> Description: <%=  review.description[(0..50)] %> [...]</h6>
+          </div>
         </div>
       </div>
+        <div class="friends">
+          <div>
+            <h5>Friends you partied with</h5>
+            <%= image_tag 'kruemel.jpg', class: "avatar-small" %>
+            <%= image_tag 'chew.png', class: "avatar-small" %>
+            <%= image_tag 'kermit.jpg', class: "avatar-small" %>
+            <%= image_tag 'pika.png', class: "avatar-small" %>
+          </div>
+        </div>
     </div>
-    <div class="friends">
-      <h6>Friends you partied with</h6>
-      <ul class="list-inline review-controls hidden-sm hidden-xs">
-       <%= image_tag 'kermit.jpg', class: 'avatar-small' %>
-       <%= image_tag 'kruemel.jpg', class: 'avatar-small' %>
-       <%= image_tag 'samson.jpg', class: 'avatar-small' %>
-     </ul>
-   </div>
- </div>
+  <% end %>
+  <% end %>
 </div>
 
 
