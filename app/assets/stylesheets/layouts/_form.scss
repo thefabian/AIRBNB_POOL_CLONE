@@ -86,10 +86,9 @@ i {
   border-bottom-left-radius: 0px !important;
   border-bottom-right-radius: 5px !important;
   box-shadow: none;
-  padding-left: 13px;
+  padding-left: 0px;
+  padding-right: 8px;
 }
-
-
 
 #map_pool {
   width: 270px;
@@ -112,6 +111,8 @@ i {
   box-shadow: none;
   font-size: 13px;
   padding-left: 8px;
+  padding-right: 0px;
+  margin-right: 0px;
   color: #999999;
 }
 
