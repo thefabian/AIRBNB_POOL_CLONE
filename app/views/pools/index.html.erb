@@ -22,7 +22,7 @@
               <p><%= pool.price %>€ per day · Free cancellation</p>
             </div>
             <% if current_user.photo.blank? %>
-            <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+            <img id="card-avatar" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
             <% else %>
             <%= cl_image_tag current_user.photo, class: "card-user" %>
             <% end %>
