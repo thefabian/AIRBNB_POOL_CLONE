@@ -14,6 +14,8 @@ class Pool < ApplicationRecord
   validates :length, presence: true, numericality: true
   validates :width, presence: true, numericality: true
   validates :depth, presence: true, numericality: true
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 
 include PgSearch
   pg_search_scope :global_search,
@@ -21,4 +23,10 @@ include PgSearch
     using: {
       tsearch: { prefix: true }
     }
+
+
+    def average_rating
+      sum = reviews.map { |review| review.rating }.sum
+      sum.fdiv(reviews.count)
+    end
 end
