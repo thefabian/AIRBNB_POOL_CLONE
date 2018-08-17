@@ -12,7 +12,7 @@ User.destroy_all
 puts "Create users..."
 
 
-user = User.create(email: 'fabian.bitta@gmail.com', password: '123456')
+user = User.create(email: 'fabian.bitta@gmail.com', password: '123456', remote_photo_url: "")
 
 puts "Created #{User.count} users"
 
@@ -30,7 +30,8 @@ pools = Pool.create([
   length: '50',
   depth: '5',
   width: '15',
-  user_id: user.id
+  user_id: user.id,
+  remote_photo_url: ""
 },
 {
   title: 'Olympiadbad',
@@ -42,7 +43,8 @@ pools = Pool.create([
   length: '100',
   depth: '7.5',
   width: '25',
-  user_id: user.id
+  user_id: user.id,
+  remote_photo_url: ""
 },
 {
   title: 'Stadtbad Neukölln',
@@ -54,7 +56,8 @@ pools = Pool.create([
   length: '12.5',
   depth: '1.5',
   width: '5',
-  user_id: user.id
+  user_id: user.id,
+  remote_photo_url: ""
 },
 {
   title: 'Badeschiff',
@@ -66,7 +69,8 @@ pools = Pool.create([
   length: '50',
   depth: '5',
   width: '15',
-  user_id: user.id
+  user_id: user.id,
+  remote_photo_url: ""
 },
 {
   title: 'Olympiadbad',
@@ -78,7 +82,8 @@ pools = Pool.create([
   length: '100',
   depth: '7.5',
   width: '25',
-  user_id: user.id
+  user_id: user.id,
+  remote_photo_url: ""
 },
 {
   title: 'Stadtbad Neukölln',
@@ -90,7 +95,8 @@ pools = Pool.create([
   length: '12.5',
   depth: '1.5',
   width: '5',
-  user_id: user.id
+  user_id: user.id,
+  remote_photo_url: ""
 },
 {
   title: 'Badeschiff',
@@ -102,7 +108,8 @@ pools = Pool.create([
   length: '50',
   depth: '5',
   width: '15',
-  user_id: user.id
+  user_id: user.id,
+  remote_photo_url: ""
 },
 {
   title: 'Olympiadbad',
@@ -114,7 +121,8 @@ pools = Pool.create([
   length: '100',
   depth: '7.5',
   width: '25',
-  user_id: user.id
+  user_id: user.id,
+  remote_photo_url: ""
 },
 {
   title: 'Stadtbad Neukölln',
@@ -126,7 +134,8 @@ pools = Pool.create([
   length: '12.5',
   depth: '1.5',
   width: '5',
-  user_id: user.id
+  user_id: user.id,
+  remote_photo_url: ""
 },
 {
   title: 'Badeschiff',
@@ -138,7 +147,8 @@ pools = Pool.create([
   length: '50',
   depth: '5',
   width: '15',
-  user_id: user.id
+  user_id: user.id,
+  remote_photo_url: ""
 },
 {
   title: 'Olympiadbad',
@@ -150,7 +160,8 @@ pools = Pool.create([
   length: '100',
   depth: '7.5',
   width: '25',
-  user_id: user.id
+  user_id: user.id,
+  remote_photo_url: ""
 },
 {
   title: 'Stadtbad Neukölln',
@@ -162,7 +173,8 @@ pools = Pool.create([
   length: '12.5',
   depth: '1.5',
   width: '5',
-  user_id: user.id
+  user_id: user.id,
+  remote_photo_url: ""
 }
 ])
 
