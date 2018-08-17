@@ -1,64 +1,76 @@
 <div class="container text-center">
-  <div class="grid">
-    <div class="card-user">
-      <div class="user-description">
-        <%= image_tag "samson.jpg", class: 'avatar' %>
-        <div class="user-header">
-          <h4>Wolfgang Petry</h4>
-          <p>Favourite jump <br> Cannonball</p>
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+      <div class="card-user">
+        <div class="user-description">
+          <%= image_tag "samson.jpg", class: 'avatar' %>
+          <div class="user-header">
+            <h4>Wolfgang Petry</h4>
+            <p>Favourite jump <br> Cannonball</p>
+          </div>
+          <div class="user-status">
+            <p><i class="fas fa-power-off"></i></p>
+          </div>
+          <div class="user-button">
+            <%= link_to "Edit Profile", pools_path, class: 'btn btn-success btn-sm' %>
+          </div>
+          <div class="quote">
+            <p><em>Deleted code is debugged code.</em></p>
+          </div>
         </div>
-        <div class="user-status">
-          <p><i class="fas fa-power-off"></i></p>
-        </div>
-        <div class="user-button">
-          <%= link_to "Get in touch", pools_path, class: 'btn btn-success' %>
-        </div>
-      </div>
-    </div>
-    <div class="card-reviews">
-      <h4>My latest review</h4>
-      <% review = current_user.reviews.last %>
-      <div id="review">
-        <small>
-          <% count = 0 %>
-          <% 5.times do %>
-          <% if review.rating > count %>
-          <i class="fas fa-star full"></i>
-          <% else %>
-          <i class="far fa-star"></i>
-          <% end %>
-          <% count += 1 %>
-        </small>
-        <% end %>
-        <p class="review-description"> <span class="review-title"> <%= link_to review.pool.title, pool_path(review.pool), class: '' %> </span> <span> <%= review.created_at %> </span></p>
-        <p> Description: <%=  review.description %> </p>
-        <p>  </p>
-        <p> Pool owner: <%= review.pool.user.email.split(".").first.capitalize %> </p>
-      </div>
-
-    </div>
-    <div class="card-latest-booking">
-      <h4>my current booking</h4>
-      <% booking = current_user.bookings.last %>
-      <p>Pool: <%=  link_to booking.pool.title, pool_path(booking.pool) %></p>
-      <p>Average rating: </p>
-      <p>Guests: <%= booking.guest %></p>
-      <p>from <%=  booking.start_date %> <%= booking.end_date %></p>
-    </div>
-    <div class="card-parties" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://source.unsplash.com/D3A50t283ck/1600x900');">
-      <div class="party-description">
-        <h5>Next party</h5>
-        <p>Karottes Kitchen</p>
-        <%= link_to 'Join now' %>
-      </div>
-    </div>
-    <div class="card-friends">
-      <div class="friends">
-        <h4>Friends you recently partied with</h4>
-        <%= image_tag "kermit.jpg", class: 'avatar' %>
-        <%= image_tag "kruemel.jpg", class: 'avatar' %>
-        <%= image_tag "chew.png", class: 'avatar' %>
-        <%= image_tag "dark.png", class: 'avatar' %>
       </div>
     </div>
   </div>
+
+  <div class="review-headline">
+    <h4>My latest review</h4>
+    <p></p>
+  </div>
+
+  <% review = current_user.reviews.last %>
+  <div class="reviews">
+    <div class='review-upvote'>
+      <div class="review-arrow"></div>
+      <div class='review-count'>95</div>
+    </div>
+    <img src="https://source.unsplash.com/Q9T0Z_F69rQ/1600x900" alt="Pool party" class="review-image hidden-xs">
+    <div class="pool-details">
+      <span> <%= link_to review.pool.title, pool_path(review.pool), class: 'btn btn-success btn-xs' %> </span>
+      <br>
+      <span class="details"> <%= review.created_at %> </span>
+      <br>
+      <span class="details"> Pool owner <%= review.pool.user.email.split(".").first.capitalize %> </span>
+    </div>
+    <div class='review-body'>
+      <div class="review-rating">
+        <div id="stars">
+          <small>
+            <% count = 0 %>
+            <% 5.times do %>
+            <% if review.rating > count %>
+            <i class="fas fa-star full"></i>
+            <% else %>
+            <i class="far fa-star empty"></i>
+            <% end %>
+            <% count += 1 %>
+          </small>
+          <% end %>
+        </div>
+        <div class="review-description">
+          <h6> Description: <%=  review.description[(0..50)] %> [...]</h6>
+        </div>
+      </div>
+    </div>
+    <div class="friends">
+      <h6>Friends you partied with</h6>
+      <ul class="list-inline review-controls hidden-sm hidden-xs">
+       <%= image_tag 'kermit.jpg', class: 'avatar-small' %>
+       <%= image_tag 'kruemel.jpg', class: 'avatar-small' %>
+       <%= image_tag 'samson.jpg', class: 'avatar-small' %>
+     </ul>
+   </div>
+ </div>
+</div>
+
+
+
