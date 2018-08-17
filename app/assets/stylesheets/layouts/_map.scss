@@ -1,8 +1,10 @@
-#map {
+#map_all {
   flex: 0 0 450px;
-  height: 100vh;
+  height: 84vh;
   position: sticky !important;
   top: 0 !important;
+  margin-top: 15px;
+  border-radius: 1px;
 }
 .content {
   display: flex;
