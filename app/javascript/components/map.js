@@ -9,7 +9,7 @@ if (document.getElementById("map_pool")) {
   container: 'map_pool',
   center: [lng, lat],
   style: 'mapbox://styles/mapbox/streets-v10',
-  minZoom: 0
+  minZoom: 9
   });
 
   var marker = new mapboxgl.Marker()
