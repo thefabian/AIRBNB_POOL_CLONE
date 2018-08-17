@@ -3,17 +3,23 @@
     <div class="col-xs-4 col-xs-offset-4">
       <div class="card-user">
         <div class="user-description">
-          <%= image_tag "samson.jpg", class: 'avatar' %>
+          <% if current_user.photo.blank? %>
+          <div class="avatar">
+            <i class="far fa-user-circle"></i>
+          </div>
+          <% else %>
+          <%= cl_image_tag current_user.photo, class: "avatar" %>
+          <% end %>
           <div class="user-header">
             <h4><%= current_user.email.split("@").first.capitalize  %> aka Wolle</h4>
             <p>Favourite jump <br> Cannonball</p>
           </div>
           <div class="user-status">
             <%= link_to user_path(current_user, anchor: "booking-section"), class: "btn btn-primary btn-xs" do %>
-              Bookings <span class="badge"><%= current_user.bookings.count %></span>
+            Bookings <span class="badge"><%= current_user.bookings.count %></span>
             <% end %>
             <%= link_to user_path(current_user, anchor: "review-section"), class: "btn btn-primary btn-xs" do %>
-              Reviews <span class="badge"><%= current_user.reviews.count %></span>
+            Reviews <span class="badge"><%= current_user.reviews.count %></span>
             <% end %>
           </div>
           <div class="user-button">
@@ -35,82 +41,82 @@
   <% current_user.reviews.each do |review| %>
 
   <% if review %>
-    <div id="reviews">
-      <div class='review-upvote'>
-          <div class="review-arrow"></div>
-          <div class='review-count'><%= review.id %></div>
-      </div>
-      <img src="https://source.unsplash.com/Q9T0Z_F69rQ/1600x900" alt="Pool party" class="review-image hidden-xs">
-      <div class="pool-details">
-        <span> <%= link_to review.pool.title, pool_path(review.pool), class: 'btn btn-success btn-xs' %> </span>
-        <br>
-        <span class="details"> <%= review.created_at %> </span>
-        <br>
-        <span class="details"> Pool owner <%= review.pool.user.email.split(".").first.capitalize %> </span>
-      </div>
-
-      <div class='review-body'>
-        <div class="review-rating">
-          <div id="stars">
-            <small>
-              <% count = 0 %>
-              <% 5.times do %>
-                <% if review.rating > count %>
-                  <i class="fas fa-star full"></i>
-                <% else %>
-                  <i class="far fa-star empty"></i>
-                <% end %>
-                <% count += 1 %>
-              <% end %>
-            </small>
-          </div>
-          <div class="review-description">
-            <h6> Description: <%=  review.description[(0..50)] %> [...]</h6>
-          </div>
-        </div>
-      </div>
-        <div class="friends">
-          <div>
-            <h5>Friends you partied with</h5>
-            <%= image_tag 'kruemel.jpg', class: "avatar-small" %>
-            <%= image_tag 'chew.png', class: "avatar-small" %>
-            <%= image_tag 'kermit.jpg', class: "avatar-small" %>
-            <%= image_tag 'pika.png', class: "avatar-small" %>
-          </div>
-        </div>
+  <div id="reviews">
+    <div class='review-upvote'>
+      <div class="review-arrow"></div>
+      <div class='review-count'><%= review.id %></div>
     </div>
+    <img src="https://source.unsplash.com/Q9T0Z_F69rQ/1600x900" alt="Pool party" class="review-image hidden-xs">
+    <div class="pool-details">
+      <span> <%= link_to review.pool.title, pool_path(review.pool), class: 'btn btn-success btn-xs' %> </span>
+      <br>
+      <span class="details"> <%= review.created_at %> </span>
+      <br>
+      <span class="details"> Pool owner <%= review.pool.user.email.split(".").first.capitalize %> </span>
+    </div>
+
+    <div class='review-body'>
+      <div class="review-rating">
+        <div id="stars">
+          <small>
+            <% count = 0 %>
+            <% 5.times do %>
+            <% if review.rating > count %>
+            <i class="fas fa-star full"></i>
+            <% else %>
+            <i class="far fa-star empty"></i>
+            <% end %>
+            <% count += 1 %>
+            <% end %>
+          </small>
+        </div>
+        <div class="review-description">
+          <h6> Description: <%=  review.description[(0..50)] %> [...]</h6>
+        </div>
+      </div>
+    </div>
+    <div class="friends">
+      <div>
+        <h5>Friends you partied with</h5>
+        <%= image_tag 'kruemel.jpg', class: "avatar-small" %>
+        <%= image_tag 'chew.png', class: "avatar-small" %>
+        <%= image_tag 'kermit.jpg', class: "avatar-small" %>
+        <%= image_tag 'pika.png', class: "avatar-small" %>
+      </div>
+    </div>
+  </div>
   <% end %>
   <% end %>
 
-   <div class="review-headline" id="booking-section">
+  <div class="review-headline" id="booking-section">
     <h4>My latest bookings</h4>
     <p></p>
   </div>
   <div id="bookings">
     <div class="row">
-        <% current_user.bookings.each do |booking| %>
-          <% if booking %>
-          <div class="col-xs-12 col-sm-6 col-md-4">
-            <div class="card-booking">
-              <div class='booking-upvote'>
-                <div class="booking-arrow"></div>
-                <div class='booking-count'><%= booking.id %></div>
-              </div>
-              <img src="https://source.unsplash.com/Q9T0Z_F69rQ/1600x900" alt="Pool party" class="booking-image hidden-xs">
-              <div class="booking-details">
-                <span> <%= link_to booking.pool.title, pool_path(booking.pool), class: 'btn btn-success btn-xs' %> </span>
-                <br>
-                <span class="date-details"> <%= booking.start_date %> </span>
-                <br>
-                <span class="owner-details"> Pool owner <%= booking.pool.user.email.split(".").first.capitalize %> </span>
-                <br>
-                <span class="rating-details">Average rating</span>
-              </div>
-
-            </div>
+      <% current_user.bookings.each do |booking| %>
+      <% if booking %>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="card-booking">
+          <div class='booking-upvote'>
+            <div class="booking-arrow"></div>
+            <div class='booking-count'><%= booking.id %></div>
           </div>
-        <% end %>
-        <% end %>
+          <img src="https://source.unsplash.com/Q9T0Z_F69rQ/1600x900" alt="Pool party" class="booking-image hidden-xs">
+          <div class="booking-details">
+            <span> <%= link_to booking.pool.title, pool_path(booking.pool), class: 'btn btn-success btn-xs' %> </span>
+            <br>
+            <span class="date-details"> <%= booking.start_date %> </span>
+            <br>
+            <span class="owner-details"> Pool owner <%= booking.pool.user.email.split(".").first.capitalize %> </span>
+            <br>
+            <span class="rating-details">Average rating</span>
+          </div>
+
+        </div>
+      </div>
+      <% end %>
+      <% end %>
     </div>
   </div>
 </div>

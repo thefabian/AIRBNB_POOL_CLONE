@@ -8,7 +8,7 @@ function bindSweetAlertButtonDemo() {
         title: "Confirm booking?",
         text: "",
         buttons: true,
-        dangerMode: true,
+        dangerMode: false,
       })
       .then((willDelete) => {
         if (willDelete) {
