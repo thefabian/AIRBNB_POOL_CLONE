@@ -48,7 +48,7 @@
       <div id="heading">
         <h3><%= @pool.price %>€ <span class="per-day">per Day</span></h3>
       </div>
-     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModaltest" data-whatever="@mdo">weather forcast</button>
+
      <div id="fillform"></div>
      <%= simple_form_for [@pool, @booking], method: :post do |t| %>
      <div class="col-xs-12 col-sm-5" style="padding-right: 0px; border-right: 0px solid #f4f4f4;">
@@ -71,9 +71,11 @@
       <div class="card" id="map_pool">
         <p>map</p>
       </div>
+      <div style="margin: 0 auto; width: 100%; min-width: 150px; position: relative; "><script type="text/javascript" src="https://weatherfor.us/static/js/minion/minion.js"></script><script type="text/javascript">w4uminion.run({"location":"berlin","txt_color":"#000000","unit":"metric"});</script></div>
     </div>
   </div>
 </div>
+
 
 </div>
 
@@ -145,25 +147,7 @@
 </div>
 
 
-<div class="modal fade" id="exampleModaltest" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabeltest" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">weather forecast</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body text-center">
-       <div id="wcom-b64b27c947f7e984d886aa9453d65b48" class="wcom-default w300x250" style="border: 0px; background-color: transparent; border-radius: 0px; color: rgb(0, 0, 0);"><link rel="stylesheet" href="//cs3.wettercomassets.com/woys/5/css/w.css" media="all"><div class="wcom-city "><a style="color: #000" href="https://www.wetter.com/deutschland/berlin/DE0001020.html" target="_blank" rel="nofollow" title="Wetter Berlin">Wetter Berlin</a></div><div id="wcom-b64b27c947f7e984d886aa9453d65b48-weather"></div><script type="text/javascript" src="//cs3.wettercomassets.com/woys/5/js/w.js"></script><script type="text/javascript">_wcomWidget({id: 'wcom-b64b27c947f7e984d886aa9453d65b48',location: 'DE0001020',format: '300x250',type: 'summary'});</script></div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
-      </div>
-    </div>
-  </div>
-</div>
 
 
 
