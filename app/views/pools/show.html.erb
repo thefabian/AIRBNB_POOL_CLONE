@@ -10,17 +10,6 @@
           <p><%= @pool.category %></p>
           <h1 id="pool"><%= @pool.title %></h1>
           <div class="list-group ">
-            <small>
-              <% count = 0 %>
-              <% 5.times do %>
-              <% if @pool.average_rating > count %>
-              <i class="fas fa-star"></i>
-              <% else %>
-              <i class="far fa-star"></i>
-              <% end %>
-              <% count += 1 %>
-              <% end %>
-            </small>
           </div>
           <p>
             <i class="fas fa-users"></i> <%= @pool.capacity    %>   <i class="fas fa-swimming-pool"></i> <%= @pool.length %>m x <%= @pool.width %>m x <%= @pool.depth %>m       <i class="fas fa-volume-up"></i> <i class="fas fa-cannabis"></i>  <i class="fas fa-wifi"></i>
@@ -39,29 +28,44 @@
             <p><i class="fas fa-wifi"></i> <%= "WIFI" %></p>
             <p><i class="fas fa-cannabis"></i> <%= "Cannabis" %></p>
 
+
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">write review</button>
           </ul>
         </div>
       </div>
     </div>
     <div id="login" class= "text-center">
-      <div id="heading">
+      <div class="col-xs-12" id="heading">
         <h3><%= @pool.price %>€ <span class="per-day">per Day</span></h3>
       </div>
-
+      <div class="col-xs-12  col-sm-12" id="stars" style="font-size: 10px">
+        <small>
+              <% count = 0 %>
+              <% 5.times do %>
+              <% if @pool.average_rating > count %>
+              <i class="fas fa-star"></i>
+              <% else %>
+              <i class="far fa-star"></i>
+              <% end %>
+              <% count += 1 %>
+              <% end %>
+              <%= "   " %>
+            </small>
+              <p><%= @pool.reviews.length %></p>
+      </div>
       <div id="fillform"></div>
       <%= simple_form_for [@pool, @booking], method: :post do |t| %>
-        <div class="col-xs-12 col-sm-6" style="padding-right: 0px; border-right: 0px solid #f4f4f4;">
-        <%= t.input :start_date, placeholder: "CHECK-IN                 →", as: :string, input_html: { id: "start_date" } %>
+        <div class="col-xs-12 col-sm-5" style="padding-right: 0px; border-right: 0px solid #f4f4f4;">
+        <%= t.input :start_date, placeholder: "CHECK-IN", as: :string, input_html: { id: "start_date" } %>
         </div>
-        <div class="col-xs-12 col-sm-6" style="padding-left: 0px; background-color: #f4f4f4;">
-        <%= t.input :end_date, placeholder: "→           CHECK-OUT", as: :string, input_html: { id: "end_date" } %>
+        <div class="col-xs-12 col-sm-7" style="padding-left: 0px; background-color: #f4f4f4;">
+        <%= t.input :end_date, placeholder: "→             CHECK-OUT", as: :string, input_html: { id: "end_date" } %>
         </div>
-        <div class="col-xs-12">
+        <div class="col-xs-12 col-sm-12">
         <%= t.input :guest, placeholder: "GUEST", collection: (1..@pool.capacity), class: "collection_form", prompt: "SELECT NUMBER OF GUESTS" %>
         </div>
-        <div class="col-xs-12">
-        <%=  t.submit "Book it now", class: "btn btn-primary", id: "testalert" %>
+        <div class="col-xs-12 col-sm-12">
+        <%=  t.submit "Book it now", class: "btn btn-primary", id: "btt" %>
         </div>
       <% end %>
       <div class="col-xs-12 col-sm-12">
@@ -70,8 +74,7 @@
         </div>
         <div class="card" id="map_pool" data-lat="<%= @pool.latitude %>" data-lng="<%= @pool.longitude %>">
         </div>
-
-      <div style="margin: 0 auto; width: 90%; min-width: 90px; position: relative; "><script type="text/javascript" src="https://weatherfor.us/static/js/minion/minion.js"></script><script type="text/javascript">w4uminion.run({"location":"berlin","txt_color":"#000000","unit":"metric"});</script></div>
+      <div class="weather" style="margin: 0 auto; width: 150px; height: 40px; position: relative; "><script type="text/javascript" src="https://weatherfor.us/static/js/minion/minion.js"></script><script type="text/javascript">w4uminion.run({"location":"berlin","txt_color":"#333333","unit":"metric"});</script></div>
       </div>
     </div>
   </div>
@@ -148,4 +151,3 @@
 </div>
 
 </div>
-
