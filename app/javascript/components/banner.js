@@ -5,7 +5,7 @@ function bindSweetAlertButtonDemo() {
   if (swalButton) { // protect other pages
     swalButton.addEventListener('click', () => {
       swal({
-        title: "confirm Booking?",
+        title: "Confirm booking?",
         text: "",
         buttons: true,
         dangerMode: true,
@@ -23,6 +23,21 @@ function bindSweetAlertButtonDemo() {
     });
   }
 }
+
+
+// function bindSweetAlertButtonDemo() {
+//   const swalButton = document.getElementById('testalert');
+//   if (swalButton) { // protect other pages
+//     swalButton.addEventListener('click', () => {
+//       swal({
+//         title: "A nice alert",
+//         text: "This is a great alert, isn't it?",
+//         icon: "success"
+//       });
+//     });
+//   }
+// }
+
 
 export { bindSweetAlertButtonDemo };
 
