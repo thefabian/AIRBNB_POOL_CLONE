@@ -23,7 +23,7 @@
             <% if current_user.photo.blank? %>
             <img id="card-avatar" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
             <% else %>
-            <%= cl_image_tag current_user.photo, class: "card-user" %>
+            <%= cl_image_tag current_user.photo, id: "card-avatar" %>
             <% end %>
             <%= link_to "", pool_path(pool), class: 'card-link' %>
           </div>
