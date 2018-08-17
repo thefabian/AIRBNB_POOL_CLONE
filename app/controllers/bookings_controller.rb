@@ -14,7 +14,7 @@ class BookingsController < ApplicationController
     @review = current_user
 
     if @booking.save
-      redirect_to pool_path(@pool)
+      # redirect_to pool_path(@pool)
     else
       render "pools/show"
     end
