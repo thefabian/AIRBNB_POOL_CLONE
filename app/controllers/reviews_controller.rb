@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
 
- def show
+  def show
     @pool = Pool.find(params[:id])
     @review = Review.new
   end
@@ -12,7 +12,6 @@ class ReviewsController < ApplicationController
     @review.user = current_user
     if @review.save
       redirect_to pool_path(@pool)
-
     else
       render "pools/show"
     end

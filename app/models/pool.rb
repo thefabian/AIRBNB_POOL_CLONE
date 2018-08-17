@@ -23,4 +23,10 @@ include PgSearch
     using: {
       tsearch: { prefix: true }
     }
+
+
+    def average_rating
+      sum = reviews.map { |review| review.rating }.sum
+      sum.fdiv(reviews.count)
+    end
 end
