@@ -5,7 +5,7 @@
         <div class="user-description">
           <%= image_tag "samson.jpg", class: 'avatar' %>
           <div class="user-header">
-            <h4>Wolfgang Petry</h4>
+            <h4><%= current_user.email.split("@").first.capitalize  %> aka Wolle</h4>
             <p>Favourite jump <br> Cannonball</p>
           </div>
           <div class="user-status">
@@ -77,10 +77,39 @@
   <% end %>
   <% end %>
 
+   <div class="review-headline">
+    <h4>My latest bookings</h4>
+    <p></p>
+  </div>
+  <div id="bookings">
+    <div class="row">
+        <% current_user.bookings.each do |booking| %>
+          <% if booking %>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="card-booking">
+              <div class='booking-upvote'>
+                <div class="booking-arrow"></div>
+                <div class='booking-count'><%= booking.id %></div>
+              </div>
+              <img src="https://source.unsplash.com/Q9T0Z_F69rQ/1600x900" alt="Pool party" class="booking-image hidden-xs">
+              <div class="booking-details">
+                <span> <%= link_to booking.pool.title, pool_path(booking.pool), class: 'btn btn-success btn-xs' %> </span>
+                <br>
+                <span class="date-details"> <%= booking.start_date %> </span>
+                <br>
+                <span class="owner-details"> Pool owner <%= booking.pool.user.email.split(".").first.capitalize %> </span>
+                <br>
+                <span class="rating-details">Average rating</span>
+              </div>
 
-
-
+            </div>
+          </div>
+        <% end %>
+        <% end %>
+    </div>
+  </div>
 </div>
+
 
 
 
